@@ -1,8 +1,8 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-  kotlin("jvm") version "1.4.10"
-  kotlin("kapt") version "1.4.10"
+  kotlin("jvm") version "1.6.10"
+  kotlin("kapt") version "1.6.10"
   application
 }
 
@@ -13,7 +13,7 @@ repositories {
   mavenCentral()
 }
 
-val moshiVersion = "1.11.0"
+val moshiVersion = "1.13.0"
 
 dependencies {
   implementation("com.squareup.moshi:moshi:$moshiVersion")

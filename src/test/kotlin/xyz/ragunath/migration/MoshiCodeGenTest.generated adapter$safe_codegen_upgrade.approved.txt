@@ -5,16 +5,15 @@ import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.JsonReader
 import com.squareup.moshi.JsonWriter
 import com.squareup.moshi.Moshi
-import com.squareup.moshi.internal.Util
+import com.squareup.moshi.`internal`.Util
 import java.lang.NullPointerException
 import kotlin.String
 import kotlin.Suppress
+import kotlin.Unit
 import kotlin.collections.emptySet
 import kotlin.text.buildString
 
-@Suppress("DEPRECATION", "unused", "ClassName", "REDUNDANT_PROJECTION", "RedundantExplicitType",
-    "LocalVariableName")
-class BookJsonAdapter(
+public class BookJsonAdapter(
   moshi: Moshi
 ) : JsonAdapter<Book>() {
   private val options: JsonReader.Options = JsonReader.Options.of("title", "author")
@@ -25,10 +24,10 @@ class BookJsonAdapter(
   private val authorAdapter: JsonAdapter<Author> = moshi.adapter(Author::class.java, emptySet(),
       "author")
 
-  override fun toString(): String = buildString(26) {
+  public override fun toString(): String = buildString(26) {
       append("GeneratedJsonAdapter(").append("Book").append(')') }
 
-  override fun fromJson(reader: JsonReader): Book {
+  public override fun fromJson(reader: JsonReader): Book {
     var title: String? = null
     var author: Author? = null
     reader.beginObject()
@@ -52,15 +51,15 @@ class BookJsonAdapter(
     )
   }
 
-  override fun toJson(writer: JsonWriter, value: Book?) {
-    if (value == null) {
-      throw NullPointerException("value was null! Wrap in .nullSafe() to write nullable values.")
+  public override fun toJson(writer: JsonWriter, value_: Book?): Unit {
+    if (value_ == null) {
+      throw NullPointerException("value_ was null! Wrap in .nullSafe() to write nullable values.")
     }
     writer.beginObject()
     writer.name("title")
-    stringAdapter.toJson(writer, value.title)
+    stringAdapter.toJson(writer, value_.title)
     writer.name("author")
-    authorAdapter.toJson(writer, value.author)
+    authorAdapter.toJson(writer, value_.author)
     writer.endObject()
   }
 }
